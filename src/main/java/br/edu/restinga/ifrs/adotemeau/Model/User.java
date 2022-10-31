@@ -1,6 +1,8 @@
 package br.edu.restinga.ifrs.adotemeau.Model;
 
 public class User {
-    String nome;
+
+    private Long id;
+    private String nome;
 
 }
