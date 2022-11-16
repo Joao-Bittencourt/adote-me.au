@@ -1,4 +1,4 @@
-package br.edu.restinga.ifrs.adotemeau.Model;
+package br.edu.restinga.ifrs.adotemeau.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,7 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
@@ -32,6 +31,7 @@ public class User {
     private String name;
 
     @Email(regexp = "[\\w-]+@([\\w-]+\\.)+[\\w-]+")
+    @Column(unique = true)
     private String email;
 
     @Pattern(regexp = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{4,8}$")

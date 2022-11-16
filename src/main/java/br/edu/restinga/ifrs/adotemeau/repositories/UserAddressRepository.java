@@ -1,9 +1,10 @@
-package br.edu.restinga.ifrs.adotemeau.Repository;
+package br.edu.restinga.ifrs.adotemeau.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import br.edu.restinga.ifrs.adotemeau.Model.UserAddress;
+import br.edu.restinga.ifrs.adotemeau.models.UserAddress;
+
 import java.util.Optional;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
