@@ -1,4 +1,4 @@
-package br.edu.restinga.ifrs.adotemeau.Model;
+package br.edu.restinga.ifrs.adotemeau.models;
 
 import javax.persistence.*;
 

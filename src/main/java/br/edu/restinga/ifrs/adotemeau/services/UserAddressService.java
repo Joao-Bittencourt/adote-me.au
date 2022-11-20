@@ -1,7 +1,8 @@
-package br.edu.restinga.ifrs.adotemeau.Service;
+package br.edu.restinga.ifrs.adotemeau.services;
 
-import br.edu.restinga.ifrs.adotemeau.Repository.UserAddressRepository;
-import br.edu.restinga.ifrs.adotemeau.Model.UserAddress;
+import br.edu.restinga.ifrs.adotemeau.models.UserAddress;
+import br.edu.restinga.ifrs.adotemeau.repositories.UserAddressRepository;
+
 import java.util.Optional;
 import javax.transaction.Transactional;
 

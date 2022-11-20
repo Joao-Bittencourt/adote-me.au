@@ -1,0 +1,11 @@
+--2022-11-19 18:12:15--  http://repo.mysql.com/RPM-GPG-KEY-mysql-2022
+Resolvendo repo.mysql.com (repo.mysql.com)... 23.59.236.230
+Conectando-se a repo.mysql.com (repo.mysql.com)|23.59.236.230|:80... conectado.
+A requisição HTTP foi enviada, aguardando resposta... 200 OK
+Tamanho: 3175 (3,1K) [text/plain]
+Salvando em: ‘STDOUT’
+
+-                                     0%[                                                                    ]       0  --.-KB/s               -                                   100%[===================================================================>]   3,10K  --.-KB/s    em 0s      
+
+2022-11-19 18:12:15 (73,5 MB/s) - escrito para a saída padrão  [3175/3175]
+

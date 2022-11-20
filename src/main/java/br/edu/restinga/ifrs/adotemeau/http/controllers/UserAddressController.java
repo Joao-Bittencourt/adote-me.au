@@ -1,7 +1,8 @@
-package br.edu.restinga.ifrs.adotemeau.Controller;
+package br.edu.restinga.ifrs.adotemeau.http.controllers;
 
-import br.edu.restinga.ifrs.adotemeau.Service.UserAddressService;
-import br.edu.restinga.ifrs.adotemeau.Model.UserAddress;
+import br.edu.restinga.ifrs.adotemeau.models.UserAddress;
+import br.edu.restinga.ifrs.adotemeau.services.UserAddressService;
+
 import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
