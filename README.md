@@ -9,6 +9,5 @@
 |Diagrama de atividades|Lucid|[Cadastro](https://lucid.app/lucidchart/589015f4-ca1f-41b2-97cb-97242ef33c8b/edit?viewport_loc=65%2C-4779%2C1707%2C1292%2C0_0&invitationId=inv_5c7463cf-bb89-4f21-8944-6c6281b33aa1) - [Login](https://lucid.app/lucidchart/e63430b4-6591-4fb8-a1ff-90bdc90b0f7d/edit?viewport_loc=592%2C-297%2C1782%2C1349%2C0_0&invitationId=inv_d809469c-de4e-4dc4-a940-5328de3271f3) - [Doação](https://lucid.app/lucidchart/83e40ad7-5c8f-4b9f-8d11-a10e9f0ca40b/edit?viewport_loc=-123%2C-1175%2C2209%2C1672%2C0_0&invitationId=inv_442177bd-7232-4d7c-b99a-18cfcd830b41) |
 |Wireframes|Balsamiq|https://balsamiq.cloud/sby1nsc/pqiz6cn/rE39C|
 |Servidor|AWS|http://adotemeau-env.eba-4y3afswp.us-east-1.elasticbeanstalk.com/|
-|Banco de dados MySQL|AWS|awseb-e-tgkuv3ukyr-stack-awsebrdsdatabase-rqvfwy1yooev.c26dhd7n2jb1.us-east-1.rds.amazonaws.com (port: 3306, user: root, password: rootuser)|
 ---
 
