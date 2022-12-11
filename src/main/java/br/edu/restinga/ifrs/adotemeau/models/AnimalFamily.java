@@ -1,6 +1,5 @@
 package br.edu.restinga.ifrs.adotemeau.models;
 
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,11 +18,11 @@ import lombok.NoArgsConstructor;
 public class AnimalFamily {
 
     @Id
-    @GeneratedValue(strategy =GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Length(max = 50)
     private String type;
 
-    private Boolean status;
+    private Boolean active;
 }

@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/user-address")
 public class UserAddressController {
 
@@ -43,7 +42,7 @@ public class UserAddressController {
     @GetMapping("/{id}")
     public ResponseEntity<Object> getUserAddress(@PathVariable(value = "id") Long id) {
         Optional<UserAddress> userAddressModelOptional = userAddressService.findById(id);
-        
+
         if (!userAddressModelOptional.isPresent()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User adress not found.");
         }
@@ -58,7 +57,7 @@ public class UserAddressController {
         }
 
         userAddress.setId(userAddressModelOptional.get().getId());
-       
+
         return ResponseEntity.status(HttpStatus.OK).body(userAddressService.create(userAddress));
-    } 
+    }
 }
