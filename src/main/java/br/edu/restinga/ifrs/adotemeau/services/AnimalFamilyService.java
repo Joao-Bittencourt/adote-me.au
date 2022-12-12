@@ -37,7 +37,7 @@ public class AnimalFamilyService {
         Optional<AnimalFamily> optional = this.animalFamilyRepository.findById(id);
 
         if (!optional.isPresent()) {
-            throw new InvalidField("id", "Não existe fanilia com este id!");
+            throw new InvalidField("id", "Não existe familia com este id!");
         }
 
         AnimalFamily animalFamily = optional.get();
