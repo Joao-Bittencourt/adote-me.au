@@ -1,7 +1,13 @@
 package br.edu.restinga.ifrs.adotemeau.models;
 
 import javax.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "user_addresses")
 public class UserAddress {
@@ -16,37 +22,8 @@ public class UserAddress {
     private String city;
     @Column(nullable = false, length = 255)
     private String district;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getDistrict() {
-        return district;
-    }
-
-    public void setDistrict(String district) {
-        this.district = district;
-    }
-
+    
+    @OneToOne
+    private User user;
+ 
 }

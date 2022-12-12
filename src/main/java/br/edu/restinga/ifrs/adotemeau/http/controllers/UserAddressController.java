@@ -1,9 +1,12 @@
 package br.edu.restinga.ifrs.adotemeau.http.controllers;
 
+import br.edu.restinga.ifrs.adotemeau.http.dtos.UserAddressDTO;
 import br.edu.restinga.ifrs.adotemeau.models.UserAddress;
 import br.edu.restinga.ifrs.adotemeau.services.UserAddressService;
 
 import java.util.Optional;
+import javax.validation.Valid;
+import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -35,7 +38,9 @@ public class UserAddressController {
     }
 
     @PostMapping
-    public ResponseEntity<Object> createUserAddresses(@RequestBody UserAddress userAddress) {
+    public ResponseEntity<Object> createUserAddresses(@Valid @RequestBody UserAddressDTO userAddressDto) {
+        var userAddress = new UserAddress();
+        BeanUtils.copyProperties(userAddressDto, userAddress);
         return ResponseEntity.status(HttpStatus.CREATED).body(userAddressService.create(userAddress));
     }
 
