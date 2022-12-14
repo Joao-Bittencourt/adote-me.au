@@ -24,23 +24,24 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 public class Animal {
-    String name;
-    String description;
-    int age;
-    String physicalCharacteristics;
-    Boolean specialNeeds;
-    Boolean adopted=null;
+    
+    private String name;
+    private String description;
+    private int age;
+    private String physicalCharacteristics;
+    private boolean specialNeeds;
+    private boolean adopted=null;
    
     @Enumerated
-    AnimalSexEnum sex;
+    private AnimalSexEnum sex;
 
     @OneToMany
-    AnimalTemperament animalTemperament;
+    private AnimalTemperament animalTemperament;
 
     @OneToOne
-    AnimalFamily animalFamily;
+    private AnimalFamily animalFamily;
 
     @OneToOne
-    AnimalBreed animalBreed !=, null;
+    private AnimalBreed animalBreed !=, null;
 
 }
