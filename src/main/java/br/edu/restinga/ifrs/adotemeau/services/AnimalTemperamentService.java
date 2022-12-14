@@ -1,6 +1,7 @@
 package br.edu.restinga.ifrs.adotemeau.services;
 
 import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,21 +17,18 @@ public class AnimalTemperamentService {
     @Autowired
     private AnimalTemperamentRepository aTempRepository;
     
-    //Cadastra um novo temperamento → create
     @Transactional
     public AnimalTemperamentDTO create(AnimalTemperament aTemp){
+        aTemp.setActive(true);
         aTempRepository.save(aTemp);
         AnimalTemperamentDTO animalTemperamentDTO = new AnimalTemperamentDTO(aTemp);
         return animalTemperamentDTO;
     }
 
-    //Lista todos os temperamentos → findAll
-    public List<AnimalTemperamentDTO> findAll(){
-        List<AnimalTemperament> aTemperaments = aTempRepository.findAll();
-        return AnimalTemperamentDTO.convertList(aTemperaments);
+    public List<AnimalTemperament> findAll(){
+        return aTempRepository.findAll();
     }
 
-    //Atualiza um temperamento → update(int id)
     public AnimalTemperamentDTO update(AnimalTemperament updateAn, Long id){
         AnimalTemperament aTemp = aTempRepository.findById(id).get();
         aTemp.setId(id);
@@ -38,16 +36,5 @@ public class AnimalTemperamentService {
         aTemp.setActive(updateAn.isActive());
         AnimalTemperamentDTO animalTemperamentDTO = new AnimalTemperamentDTO(aTempRepository.save(aTemp));
         return animalTemperamentDTO;
-    }
-
-    //Desativar ou ativar um temperamento. Nesse caso, a service deve receber true ou false → changeStatus(String action)
-    public String changeStatus(String action){
-        boolean status = Boolean.getBoolean(action);
-        if(status){
-            status = false;
-        }else{
-            status = true;
-        }
-        return String.valueOf(status);
     }
 }
