@@ -1,13 +1,18 @@
 package br.edu.restinga.ifrs.adotemeau.services;
 
+import java.util.List;
+import java.util.Optional;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.edu.restinga.ifrs.adotemeau.services.AnimalFamilyService;
+
+
 import br.edu.restinga.ifrs.adotemeau.exceptions.InvalidField;
 import br.edu.restinga.ifrs.adotemeau.http.dtos.AnimalDTO;
-import br.edu.restinga.ifrs.adotemeau.http.dtos.UserDTO;
 import br.edu.restinga.ifrs.adotemeau.models.Animal;
 import br.edu.restinga.ifrs.adotemeau.repositories.AnimalRepository;
 

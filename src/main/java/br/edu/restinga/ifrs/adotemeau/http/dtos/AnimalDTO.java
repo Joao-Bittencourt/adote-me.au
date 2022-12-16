@@ -1,6 +1,6 @@
 package br.edu.restinga.ifrs.adotemeau.http.dtos;
-import static org.mockito.Mockito.description;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.persistence.Enumerated;

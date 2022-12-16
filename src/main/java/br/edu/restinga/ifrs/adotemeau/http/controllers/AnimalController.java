@@ -4,7 +4,7 @@ import java.net.URISyntaxException;
 
 import javax.validation.Valid;
 
-import org.hibernate.mapping.List;
+import java.util.List;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -52,13 +52,13 @@ public class AnimalController {
     //Localizar um animal → GET /animal/family/{animalFamily}
     @GetMapping("/animal/family/{animalFamily}")
     public ResponseEntity<AnimalDTO> findByAnimalFamily(String animalFamily) {
-        return ResponseEntity.ok().body(animalService.findByAnimalTemperament(animalTemperament));
+        return ResponseEntity.ok().body(animalService.findByAnimalFamily(animalFamily));
     }
 
     //Localizar um animal → GET /animal/breed/{animalBreed}
     @GetMapping("/animal/breed/{animalBreed}")
     public ResponseEntity<AnimalDTO> findByAnimalBreed(String animalBreed) {
-        return ResponseEntity.ok().body(animalBreed.findByAnimalTemperament(animalBreed));
+        return ResponseEntity.ok().body(animalBreed.findByAnimalBreed(animalBreed));
     }
 
     //Atualizar um animal → UPDATE/animal/{id}
