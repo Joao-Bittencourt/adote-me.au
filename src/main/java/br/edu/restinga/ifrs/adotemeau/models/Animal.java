@@ -30,7 +30,7 @@ public class Animal {
     private int age;
     private String physicalCharacteristics;
     private boolean specialNeeds;
-    private boolean adopted=null;
+    private boolean adopted;
    
     @Enumerated
     private AnimalSexEnum sex;
