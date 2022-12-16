@@ -42,6 +42,6 @@ public class Animal {
     private AnimalFamily animalFamily;
 
     @OneToOne
-    private AnimalBreed animalBreed !=, null;
+    private AnimalBreed animalBreed;
 
 }
