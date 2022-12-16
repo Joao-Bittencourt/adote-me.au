@@ -20,14 +20,14 @@ public class UserDTO {
 
     private Long id;
 
-    @NotBlank(message = "O campo não pode ser nulo, vazio ou em branco")
+    @NotBlank(message = "O campo name não pode ser nulo, vazio ou em branco")
     private String name;
 
-    @NotNull(message = "O campo não pode ser nulo, vazio ou em branco")
+    @NotNull(message = "O campo email não pode ser nulo, vazio ou em branco")
     @Email(regexp = "[\\w-]+@([\\w-]+\\.)+[\\w-]+")
     private String email;
 
-    @NotNull(message = "O campo não pode ser nulo, vazio ou em branco")
+    @NotNull(message = "O campo password não pode ser nulo, vazio ou em branco")
     @Pattern(regexp = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{4,8}$", message = "A senha deve ter pelo menos 4 caracteres, não mais que 8 caracteres e deve incluir pelo menos uma letra maiúscula, uma letra minúscula e um dígito numérico.")
     private String password;
 
