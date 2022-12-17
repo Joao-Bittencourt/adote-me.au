@@ -23,5 +23,5 @@ public class AnimalTemperament {
     
     private String type;
 
-    private boolean active;
+    private Boolean active;
 }
