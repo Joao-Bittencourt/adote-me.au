@@ -10,4 +10,6 @@ import org.springframework.stereotype.Repository;
 public interface AnimalBreedRepository extends JpaRepository<AnimalBreed, Long> {
 
     List<AnimalBreed> findByAnimalFamilyTypeContaining(String fanimalFamilyType);
+
+    List<AnimalBreed> findAllByActive(Boolean active);
 }
