@@ -21,16 +21,16 @@ public class File implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Column(nullable = false)
+    @Column(name="imgur_image_hash", nullable = false)
     private String imgurImageHash;
 
-    @Column(nullable = false)
+    @Column(name="imgur_image_delete_hash", nullable = false)
     private String imgurImageDeleteHash;
 
     @Column(nullable = false)
     private String path;
 
-    @Column(nullable = false)
+    @Column(name="entity_id", nullable = false)
     private Long entityId;
 
     @Column(nullable = false)
