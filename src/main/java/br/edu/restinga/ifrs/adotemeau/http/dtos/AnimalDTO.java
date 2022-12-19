@@ -9,6 +9,9 @@ import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import br.edu.restinga.ifrs.adotemeau.http.controllers.AnimalBreedController;
+import br.edu.restinga.ifrs.adotemeau.http.controllers.AnimalFamilyController;
+import br.edu.restinga.ifrs.adotemeau.http.controllers.AnimalTemperamentController;
 import br.edu.restinga.ifrs.adotemeau.models.Animal;
 import br.edu.restinga.ifrs.adotemeau.models.AnimalFamily;
 import br.edu.restinga.ifrs.adotemeau.models.enums.AnimalSexEnum;
@@ -39,15 +42,15 @@ public class AnimalDTO {
 
     @OneToMany
     @NotNull(message = "O campo não pode ser nulo, vazio ou em branco")
-    private AnimalTemperament animalTemperament;
+    private AnimalTemperamentController animalTemperament;
 
     @OneToOne
     @NotNull(message = "O campo não pode ser nulo, vazio ou em branco")
-    private AnimalFamily animalFamily;
+    private AnimalFamilyController animalFamily;
 
     @OneToOne
     @NotNull(message = "O campo não pode ser nulo, vazio ou em branco")
-    private AnimalBreed animalBreed;
+    private AnimalBreedController animalBreed;
 
 
     public AnimalDTO(Animal animal) {
@@ -58,7 +61,7 @@ public class AnimalDTO {
         this.specialNeeds = animal.getSpecialNeeds();
         this.adopted = animal.getAdopted();
         this.sex = animal.getSex();
-        this.animalTemperament = animal.getAnimalTemperament();
+        this.animalTemperament = animal.AnimalTemperamentController();
         this.animalFamily = animal.getAnimalFamily();
         this.animalBreed = animal.getAnimalBreed();
     }

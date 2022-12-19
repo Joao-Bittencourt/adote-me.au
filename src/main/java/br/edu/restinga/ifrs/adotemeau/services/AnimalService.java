@@ -2,19 +2,19 @@ package br.edu.restinga.ifrs.adotemeau.services;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Scanner;
+import java.io.IOException;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.edu.restinga.ifrs.adotemeau.services.AnimalFamilyService;
-
-
 import br.edu.restinga.ifrs.adotemeau.exceptions.InvalidField;
 import br.edu.restinga.ifrs.adotemeau.http.dtos.AnimalDTO;
 import br.edu.restinga.ifrs.adotemeau.models.Animal;
 import br.edu.restinga.ifrs.adotemeau.repositories.AnimalRepository;
+
 
 @Service
 public class AnimalService {
@@ -83,7 +83,7 @@ public class AnimalService {
         if(updateAnimal.getDescription() != null)
             animal.setDescription(updateAnimal.getDescription());
 
-        if(updateAnimal.getAge() != null)
+        if(updateAnimal.getAge() != 0)
             animal.setAge(updateAnimal.getAge());
 
         if(updateAnimal.getPhysicalCharacteristics() != null)
@@ -114,21 +114,21 @@ public class AnimalService {
     }
 
     @Transactional
-    public boolean changeAdoptionStatus(boolean adopted, Long id){
+    public void changeAdoptionStatus(boolean adopted, Long id) throws IOException{
         Scanner ler = new Scanner(System.in);
+        char key;
         Optional<Animal> optional = this.animalRepository.findById(id);
 
         if (!optional.isPresent()) {
             throw new InvalidField("id", "Não existe animal com este id!");
         }
-        Animal key = optional.get();
-        System.out.printf("Animal esta disponivel, Sim ou Não?:\key");
-        key = ler.nextLine();
-
-        if ((key == 'Sim') || (key == 'Não'))
-        System.out.printf("Adotado? \"%s\".\n");
+        System.out.printf("\nAnimal esta disponivel (S/N):\n");
+        key = (char)System.in.read();
+        
+        if ((key == 'S') || (key == 's'))
+        System.out.printf("Adotado? %s.\n");
             else 
-            System.out.printf("Adotado? \"%s\".\n");
+            System.out.printf("Adotado? %s.\n");
     }
 
 }
