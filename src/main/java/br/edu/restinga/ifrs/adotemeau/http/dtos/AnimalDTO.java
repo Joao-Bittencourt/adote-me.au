@@ -70,3 +70,5 @@ public class AnimalDTO {
         return animals.stream().map(AnimalDTO::new).collect(Collectors.toList());
     }
 }
+
+
