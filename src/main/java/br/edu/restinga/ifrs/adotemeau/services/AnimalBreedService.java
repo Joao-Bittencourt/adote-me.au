@@ -22,6 +22,7 @@ public class AnimalBreedService {
 
     @Transactional
     public AnimalBreedDTO create(AnimalBreed animalBreed) {
+        animalBreed.setActive(true);
         animalBreedRepository.save(animalBreed);
         AnimalBreedDTO animalBreedDTO = new AnimalBreedDTO(animalBreed);
         return animalBreedDTO;
@@ -93,6 +94,11 @@ public class AnimalBreedService {
     public List<AnimalBreedDTO> findByAnimalFamilyTypeContaining(String animalFamilyType) {
          List<AnimalBreed> listAnimalBreed = animalBreedRepository.findByAnimalFamilyTypeContaining(animalFamilyType);
         return AnimalBreedDTO.convertList(listAnimalBreed);
+    }
+
+    public List<AnimalBreedDTO> findAllByActive(Boolean status) {
+        List<AnimalBreed> listAnimalFamily = animalBreedRepository.findAllByActive(status);
+        return AnimalBreedDTO.convertList(listAnimalFamily);
     }
 
 }

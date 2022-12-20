@@ -1,6 +1,5 @@
 package br.edu.restinga.ifrs.adotemeau.models;
 
-import br.edu.restinga.ifrs.adotemeau.models.enums.EntityTypeEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,19 +20,12 @@ public class File implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Column(name="imgur_image_hash", nullable = false)
-    private String imgurImageHash;
+    @Column(name="imgur_id", nullable = false)
+    private String imgurId;
 
-    @Column(name="imgur_image_delete_hash", nullable = false)
-    private String imgurImageDeleteHash;
+    @Column(name="imgur_delete_id", nullable = false)
+    private String imgurDeleteId;
 
     @Column(nullable = false)
     private String path;
-
-    @Column(name="entity_id", nullable = false)
-    private Long entityId;
-
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    private EntityTypeEnum type;
 }
