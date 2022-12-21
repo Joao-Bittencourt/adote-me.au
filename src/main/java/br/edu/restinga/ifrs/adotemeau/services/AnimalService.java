@@ -14,14 +14,14 @@ import br.edu.restinga.ifrs.adotemeau.exceptions.InvalidField;
 import br.edu.restinga.ifrs.adotemeau.http.dtos.AnimalDTO;
 import br.edu.restinga.ifrs.adotemeau.models.Animal;
 import br.edu.restinga.ifrs.adotemeau.repositories.AnimalRepository;
-
+import br.edu.restinga.ifrs.adotemeau.repositories.AnimalBreedRepository;
 
 @Service
 public class AnimalService {
     
     @Autowired
     private AnimalRepository animalRepository;
-
+    private AnimalBreedRepository animalBreedRepository;
     @Transactional
     public AnimalDTO create(Animal animal) {
         animalRepository.save(animal);
@@ -56,8 +56,8 @@ public class AnimalService {
         return animalDto;
     }
 
-    public AnimalDTO findByAnimalBreed(String animalBreed) {
-        var animal = animalRepository.findByAnimalBreed(animalBreed);
+    public AnimalDTO findAnimalBreed(String animalBreed) {
+        var animal = animalBreedRepository.findByAnimalBreed(animalBreed);
 
         if (!animal.isPresent()) {
             throw new InvalidField("animalBreed", "Não existe animal com este Temperamento!");
