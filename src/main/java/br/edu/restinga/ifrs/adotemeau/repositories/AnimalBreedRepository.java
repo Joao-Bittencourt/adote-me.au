@@ -11,5 +11,5 @@ public interface AnimalBreedRepository extends JpaRepository<AnimalBreed, Long> 
 
     List<AnimalBreed> findByAnimalFamilyTypeContaining(String fanimalFamilyType);
 
-    Object findByAnimalBreed(String animalBreed);
+    // Object findByAnimalBreed(String animalBreed);
 }

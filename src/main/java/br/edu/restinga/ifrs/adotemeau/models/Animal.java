@@ -1,7 +1,8 @@
 package br.edu.restinga.ifrs.adotemeau.models;
 
+import java.util.List;
+
 import javax.persistence.Entity;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,17 +25,21 @@ public class Animal {
     private Long id;
 
     private String name;
+    
     private String description;
+
     private int age;
+
     private String physicalCharacteristics;
+
     private boolean specialNeeds;
+
     private boolean adopted;
    
-    @Enumerated
     private AnimalSexEnum sex;
 
     @OneToMany
-    private AnimalTemperament animalTemperament;
+    private List<AnimalTemperament> animalTemperament;
 
     @OneToOne
     private AnimalFamily animalFamily;
