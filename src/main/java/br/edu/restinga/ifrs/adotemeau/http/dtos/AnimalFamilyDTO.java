@@ -17,7 +17,7 @@ public class AnimalFamilyDTO {
 
     private Long id;
 
-    @NotBlank(message = "O campo não pode ser nulo, vazio ou em branco")
+    @NotBlank(message = "O campo type não pode ser nulo, vazio ou em branco")
     private String type;
 
     private boolean active;

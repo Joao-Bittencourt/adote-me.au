@@ -212,7 +212,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/animal/family/find?status=0",
+							"raw": "http://localhost:8080/animal/family/find?status=1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -226,7 +226,7 @@
 							"query": [
 								{
 									"key": "status",
-									"value": "0"
+									"value": "1"
 								}
 							]
 						}
@@ -305,7 +305,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"type\": \"Calmo\"\r\n}",
+							"raw": "{\r\n    \"type\": \"Estressado\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -350,11 +350,11 @@
 				{
 					"name": "Update",
 					"request": {
-						"method": "PUT",
+						"method": "GET",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"type\": \"Bravo Update\",\r\n    \"active\": true\r\n}",
+							"raw": "{\r\n    \"type\": \"Bravo\",\r\n    \"active\": false\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -362,7 +362,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/animal/temperament/1",
+							"raw": "http://localhost:8080/animal/temperament/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -371,7 +371,7 @@
 							"path": [
 								"animal",
 								"temperament",
-								"1"
+								"2"
 							]
 						}
 					},
@@ -411,7 +411,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": 1,\r\n    \"active\": false\r\n}",
+							"raw": "{\r\n    \"id\": 2,\r\n    \"active\": true\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -446,7 +446,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"type\": \"Buldog\",\r\n    \"animalFamily\": {\r\n        \"id\" : 2\r\n    }\r\n}",
+							"raw": "{\r\n    \"type\": \"Persa\",\r\n    \"animalFamily\": {\r\n        \"id\" : 2\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -495,6 +495,28 @@
 							"path": [
 								"animal",
 								"breed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/animal/breed/view/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"animal",
+								"breed",
+								"view",
+								"1"
 							]
 						}
 					},
@@ -689,6 +711,209 @@
 							"path": [
 								"files",
 								"8dip7U1us4xcYg7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Animal",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Gato\",\r\n    \"description\": \"Destruidora de grades e cercas\",\r\n    \"age\": 1,\r\n    \"physicalCharacteristics\": \"Característica do animal\",\r\n    \"specialNeeds\": false,\r\n    \"sex\": \"FEMALE\",\r\n    \"user\": {\r\n        \"id\": 1\r\n    },\r\n    \"breed\": {\r\n        \"id\": 2\r\n    },\r\n    \"family\": {\r\n        \"id\": 2\r\n    },\r\n    \"temperaments\": [\r\n        {\"id\": 2}\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/animal",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"animal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Gato\",\r\n    \"description\": \"Destruidora de grades e cercas\",\r\n    \"age\": 1,\r\n    \"physicalCharacteristics\": \"Característica do animal\",\r\n    \"specialNeeds\": false,\r\n    \"sex\": \"FEMALE\",\r\n    \"user\": {\r\n        \"id\": 1\r\n    },\r\n    \"breed\": {\r\n        \"id\": 2\r\n    },\r\n    \"family\": {\r\n        \"id\": 2\r\n    },\r\n    \"temperaments\": [\r\n        {\"id\": 2}\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/animal",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"animal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/animal/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"animal",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Is Adopted",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/animal/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"animal",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/animal/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"animal",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/animal",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"animal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find By Temperament",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/animal/by-temperament/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"animal",
+								"by-temperament",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find By Family",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/animal/by-family/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"animal",
+								"by-family",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find By Breed",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/animal/by-breed/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"animal",
+								"by-breed",
+								"2"
 							]
 						}
 					},

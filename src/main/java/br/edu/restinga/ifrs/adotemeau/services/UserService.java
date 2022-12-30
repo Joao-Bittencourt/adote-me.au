@@ -45,7 +45,6 @@ public class UserService {
         } 
 
         UserDTO userDto = new UserDTO(user.get());
-
         return userDto;
     }
 
@@ -67,7 +66,6 @@ public class UserService {
             user.setEmail(updateUser.getEmail());
         
         UserDTO userDto = new UserDTO(this.userRepository.save(user));
-
         return userDto;
     }
 
