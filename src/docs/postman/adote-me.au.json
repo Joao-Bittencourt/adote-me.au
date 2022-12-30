@@ -350,7 +350,7 @@
 				{
 					"name": "Update",
 					"request": {
-						"method": "PUT",
+						"method": "GET",
 						"header": [],
 						"body": {
 							"mode": "raw",
@@ -546,6 +546,28 @@
 							"path": [
 								"animal",
 								"breed",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FindById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/animal/breed/view/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"animal",
+								"breed",
+								"view",
 								"1"
 							]
 						}

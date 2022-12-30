@@ -9,11 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.edu.restinga.ifrs.adotemeau.http.dtos.AnimalTemperamentDTO;
@@ -42,5 +44,15 @@ public class AnimalTemperamentController {
     @PutMapping("/{id}")
     public ResponseEntity<AnimalTemperamentDTO> update(@Valid @RequestBody AnimalTemperament aTemp, @PathVariable Long id) {
         return ResponseEntity.ok().body(animalTemperamentService.update(aTemp, id));
+    }
+
+    @PatchMapping("/active")
+    public ResponseEntity<AnimalTemperamentDTO> changeStatus(@Valid @RequestBody AnimalTemperament animalTemperament) {
+        return ResponseEntity.ok().body(animalTemperamentService.changeStatus(animalTemperament));
+    }
+
+    @GetMapping("/find")
+    public ResponseEntity<List<AnimalTemperament>> findAllByActive(@RequestParam("status") Boolean status) {
+        return ResponseEntity.ok().body(animalTemperamentService.findAllByActive(status));
     }
 }
