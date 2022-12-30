@@ -35,7 +35,7 @@ public class AnimalTemperamentService {
         AnimalTemperament aTemp = aTempRepository.findById(id).get();
         aTemp.setId(id);
         aTemp.setType(updateAn.getType());
-        aTemp.setActive(updateAn.getActive());
+        aTemp.setActive(updateAn.isActive());
         AnimalTemperamentDTO animalTemperamentDTO = new AnimalTemperamentDTO(aTempRepository.save(aTemp));
         return animalTemperamentDTO;
     }
@@ -50,8 +50,8 @@ public class AnimalTemperamentService {
 
         AnimalTemperament animalFamily = optional.get();
 
-        if (updateAnimalTemperament.getActive() != null) {
-            animalFamily.setActive(updateAnimalTemperament.getActive());
+        if (updateAnimalTemperament.isActive()) {
+            animalFamily.setActive(updateAnimalTemperament.isActive());
         }
 
         AnimalTemperamentDTO animalFamilyDTO = new AnimalTemperamentDTO(this.aTempRepository.save(animalFamily));
