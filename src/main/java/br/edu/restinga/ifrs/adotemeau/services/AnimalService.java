@@ -1,5 +1,7 @@
 package br.edu.restinga.ifrs.adotemeau.services;
 
+import java.util.List;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,9 +21,19 @@ public class AnimalService {
     public Animal create(AnimalDTO animalDTO) {
         Animal animal = new Animal();
         BeanUtils.copyProperties(animalDTO, animal);
+        animal.setTemperament(animalDTO.getTemperaments());
+
         return animalRepository.save(animal);
     }
 
+    public Animal findById(Long id) {
+        return this.animalRepository.findById(id).get();
+    }
+
+    public List<Animal> findAll() {
+        List<Animal> animals = this.animalRepository.findAll();
+        return animals;
+    }
 
 
 

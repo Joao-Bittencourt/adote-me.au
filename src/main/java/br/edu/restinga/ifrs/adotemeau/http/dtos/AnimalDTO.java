@@ -1,14 +1,17 @@
 package br.edu.restinga.ifrs.adotemeau.http.dtos;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.Enumerated;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import br.edu.restinga.ifrs.adotemeau.models.Animal;
 import br.edu.restinga.ifrs.adotemeau.models.AnimalBreed;
 import br.edu.restinga.ifrs.adotemeau.models.AnimalFamily;
 import br.edu.restinga.ifrs.adotemeau.models.AnimalTemperament;
+import br.edu.restinga.ifrs.adotemeau.models.User;
 import br.edu.restinga.ifrs.adotemeau.models.enums.AnimalSexEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,7 +21,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AnimalDTO {
-    
+
     private Long id;
 
     @NotBlank(message = "O campo name não pode ser nulo, vazio ou em branco")
@@ -36,33 +39,34 @@ public class AnimalDTO {
     @NotNull(message = "O campo physicalCharacteristics não pode ser nulo, vazio ou em branco")
     private boolean specialNeeds;
     
-    private boolean adopted;
-    
     @Enumerated
     @NotNull(message = "O campo sex não pode ser nulo, vazio ou em branco!")
     private AnimalSexEnum sex;
 
     @NotNull(message = "O campo animalTemperament não pode ser nulo, vazio ou em branco!")
-    private List<AnimalTemperament> animalTemperament;
+    private List<AnimalTemperament> temperaments;
 
     @NotNull(message = "O campo animalFamily não pode ser nulo, vazio ou em branco!")
-    private AnimalFamily animalFamily;
+    private AnimalFamily family;
 
     @NotNull(message = "O campo animalBreed não pode ser nulo, vazio ou em branco!")
-    private AnimalBreed animalBreed;
+    private AnimalBreed breed;
 
+    @NotNull(message = "O campo animalBreed não pode ser nulo, vazio ou em branco!")
+    private User user;
 
     // public AnimalDTO(Animal animal) {
     //     this.id = animal.getId();
     //     this.name = animal.getName();
     //     this.description = animal.getDescription();
+    //     this.age = animal.getAge();
     //     this.physicalCharacteristics = animal.getPhysicalCharacteristics();
-    //     this.specialNeeds = animal.getSpecialNeeds();
-    //     this.adopted = animal.getAdopted();
+    //     this.specialNeeds = animal.isSpecialNeeds();
     //     this.sex = animal.getSex();
-    //     this.animalTemperament = animal.AnimalTemperamentController();
-    //     this.animalFamily = animal.getAnimalFamily();
-    //     this.animalBreed = animal.getAnimalBreed();
+    //     this.temperaments = animal.getTemperament();
+    //     this.family = animal.getFamily();
+    //     this.breed = animal.getBreed();
+    //     this.user = animal.getUser();
     // }
 
     // public static List<AnimalDTO> convertList(List<Animal> animals) {
