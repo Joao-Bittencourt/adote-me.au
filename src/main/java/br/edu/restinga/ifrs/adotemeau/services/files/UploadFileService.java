@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import br.edu.restinga.ifrs.adotemeau.exceptions.CustomException;
 import br.edu.restinga.ifrs.adotemeau.exceptions.StringResponse;
 import br.edu.restinga.ifrs.adotemeau.models.File;
-import br.edu.restinga.ifrs.adotemeau.models.enums.EntityTypeEnum;
 import br.edu.restinga.ifrs.adotemeau.repositories.FileRepository;
 import br.edu.restinga.ifrs.adotemeau.services.externalApi.imgur.ImgurUploadService;
 
@@ -25,7 +24,7 @@ public class UploadFileService {
     @Autowired
     private FileRepository fileRepository;
 
-    public ResponseEntity execute(byte[] image, Long entityId, EntityTypeEnum entityType) {
+    public ResponseEntity execute(byte[] image) {
         try {
             Map<String, String> fileImgur = this.imgurUploadService.execute(image);
 
@@ -33,7 +32,7 @@ public class UploadFileService {
                 return new ResponseEntity(new StringResponse("Internal server error!"), HttpStatus.INTERNAL_SERVER_ERROR);
             }
 
-            this.createFile(fileImgur, entityId, entityType);
+            this.createFile(fileImgur);
 
             return new ResponseEntity(new StringResponse("Created new File"), HttpStatus.OK);
         } catch (CustomException e) {
@@ -42,12 +41,10 @@ public class UploadFileService {
     }
 
     @Transactional
-    private void createFile(Map<String, String> fileImgur,Long entityId, EntityTypeEnum entityType) {
+    private void createFile(Map<String, String> fileImgur) {
         File file = new File();
-        file.setEntityId(entityId);
-        file.setType(entityType);
-        file.setImgurImageHash(fileImgur.get("fileId"));
-        file.setImgurImageDeleteHash(fileImgur.get("deleteHash"));
+        file.setImgurId(fileImgur.get("imgurId"));
+        file.setImgurDeleteId(fileImgur.get("imgurDeleteId"));
         file.setPath(fileImgur.get("path"));
 
         this.fileRepository.save(file);

@@ -8,6 +8,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,17 +18,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/animal/breed")
 public class AnimalBreedController {
 
-    final AnimalBreedService animalBreedService;
-
-    public AnimalBreedController(AnimalBreedService animalBreedService) {
-        this.animalBreedService = animalBreedService;
-    }
+    @Autowired
+    AnimalBreedService animalBreedService;
 
     @GetMapping
     public ResponseEntity<List<AnimalBreedDTO>> findAll() {
@@ -62,5 +61,10 @@ public class AnimalBreedController {
     @PatchMapping("/active")
     public ResponseEntity<AnimalBreedDTO> changeStatus(@Valid @RequestBody AnimalBreed animalFamily) {
         return ResponseEntity.ok().body(animalBreedService.changeStatus(animalFamily));
+    }
+
+    @GetMapping("/find")
+    public ResponseEntity<List<AnimalBreedDTO>> findAllByActive(@RequestParam("status") Boolean status) {
+        return ResponseEntity.ok().body(animalBreedService.findAllByActive(status));
     }
 }

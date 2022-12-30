@@ -27,5 +27,5 @@ public class AnimalTemperament implements Serializable {
     
     private String type;
 
-    private boolean active; 
+    private boolean active;
 }

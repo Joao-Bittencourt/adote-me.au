@@ -14,7 +14,7 @@ public class AnimalTemperamentDTO {
 
     private Long id;
 
-    @NotNull(message="O campo NÂO pode se nulo, vazio ou em branco!")
+    @NotNull(message="O campo type NÂO pode se nulo, vazio ou em branco!")
     private String type;
 
     private boolean active;
@@ -22,6 +22,6 @@ public class AnimalTemperamentDTO {
     public AnimalTemperamentDTO(AnimalTemperament aTemperament){
         this.id = aTemperament.getId();
         this.type = aTemperament.getType();
-        this.active = aTemperament.isActive();
+        this.active = aTemperament.getActive();
     }
 }

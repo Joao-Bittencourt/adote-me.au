@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -57,5 +58,10 @@ public class AnimalFamilyController {
     @PatchMapping("/active")
     public ResponseEntity<AnimalFamilyDTO> changeStatus(@Valid @RequestBody AnimalFamily animalFamily) {
         return ResponseEntity.ok().body(animalFamilyService.changeStatus(animalFamily));
+    }
+
+    @GetMapping("/find")
+    public ResponseEntity<List<AnimalFamilyDTO>> findAllByActive(@RequestParam("status") Boolean status) {
+        return ResponseEntity.ok().body(animalFamilyService.findAllByActive(status));
     }
 }

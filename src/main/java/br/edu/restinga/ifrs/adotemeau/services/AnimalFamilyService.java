@@ -85,4 +85,9 @@ public class AnimalFamilyService {
         AnimalFamilyDTO animalFamilyDTO = new AnimalFamilyDTO(animalFamily.get());
         return animalFamilyDTO;
     }
+
+    public List<AnimalFamilyDTO> findAllByActive(Boolean status) {
+        List<AnimalFamily> listAnimalFamily = animalFamilyRepository.findAllByActive(status);
+        return AnimalFamilyDTO.convertList(listAnimalFamily);
+    }
 }

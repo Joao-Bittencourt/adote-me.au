@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -20,14 +21,17 @@ public class ImgurUploadService {
     @Autowired
     private WebClient webClient;
 
+    @Value("${imgur.authorization}")
+    private String imgurAuthorization;
+
     public Map<String, String> execute(byte[] image) {
         
-        String file = getFile(image);
+        String file = uploadFile(image);
 
         return getHashMap(file);
     }
 
-    private String getFile(byte[] image) {
+    private String uploadFile(byte[] image) {
         ByteArrayResource filePart = new ByteArrayResource(image);
 
         MultipartBodyBuilder builder = new MultipartBodyBuilder();
@@ -38,7 +42,7 @@ public class ImgurUploadService {
                 .uri("/image")
                 .contentType(MediaType.MULTIPART_FORM_DATA)
                 .body(BodyInserters.fromMultipartData(builder.build()))
-                .headers(header -> header.set("Authorization", "Client-ID 002685e84bf8389"))
+                .headers(header -> header.set("Authorization", this.imgurAuthorization))
                 .retrieve()
                 .bodyToMono(String.class);
 
@@ -49,8 +53,8 @@ public class ImgurUploadService {
         String[] arrOfStr = file.split("[:,]");
 
         Map<String, String> map = new HashMap<String, String>();
-        map.put("fileId", arrOfStr[2].replace("\"", ""));
-        map.put("deleteHash", arrOfStr[52].replace("\"", ""));
+        map.put("imgurId", arrOfStr[2].replace("\"", ""));
+        map.put("imgurDeleteId", arrOfStr[52].replace("\"", ""));
         map.put("path", "https:" + arrOfStr[57].replace("\\", "").replace("}", "").replace("\"", ""));
 
         return map;
