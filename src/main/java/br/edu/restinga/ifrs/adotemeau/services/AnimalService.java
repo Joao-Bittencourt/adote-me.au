@@ -2,6 +2,8 @@ package br.edu.restinga.ifrs.adotemeau.services;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,132 +33,41 @@ public class AnimalService {
     }
 
     public List<Animal> findAll() {
-        List<Animal> animals = this.animalRepository.findAll();
-        return animals;
+        return this.animalRepository.findAll();
     }
 
+    public List<Animal> findByTemperament(Long id) {
+        return this.animalRepository.findByTemperament_Id(id);
+    }
 
+    public List<Animal> findByFamily(Long id) {
+        return this.animalRepository.findByFamily_Id(id);
+    }
 
+    public List<Animal> findByBreed(Long id) {
+        return this.animalRepository.findByBreed_Id(id);
+    }
 
+    public Animal update(Long id, @Valid AnimalDTO animalDTO) {
 
+        Animal animal = new Animal();
+        BeanUtils.copyProperties(animalDTO, animal);
 
+        Animal animalEntity = animalRepository.findById(id).get();
 
-
-
-
-
-
-
-    // @Autowired
-    // private AnimalRepository animalRepository;
-    // private AnimalBreedRepository animalBreedRepository;
-    // @Transactional
-    // public AnimalDTO create(Animal animal) {
-    //     animalRepository.save(animal);
-    //     AnimalDTO animalDto = new AnimalDTO(animal);
-    //     return animalDto;
-    // }
-
-    // public List<AnimalDTO> findAll() {
-    //     List<Animal> animals = (List<Animal>) animalRepository.findAll();
-    //     return AnimalDTO.convertList(animals);
-    // }
-
-    // public AnimalDTO findByAnimalTemperament(String animalTemperament) {
-    //     var animal = animalRepository.findByAnimalTemperament(animalTemperament);
-
-    //     if (!animal.isPresent()) {
-    //         throw new InvalidField("animalTemperament", "Não existe animal com este Temperamento!");
-    //     } 
-
-    //     AnimalDTO animalDto = new AnimalDTO(animal.get());
-    //     return animalDto;
-    // }
-
-    // public AnimalDTO findByAnimalFamily(String animalFamily) {
-    //     var animal = animalRepository.findByAnimalFamily(animalFamily);
-
-    //     if (!animal.isPresent()) {
-    //         throw new InvalidField("animalFamily", "Não existe animal com este Temperamento!");
-    //     } 
-
-    //     AnimalDTO animalDto = new AnimalDTO(animal.get());
-    //     return animalDto;
-    // }
-
-    // public AnimalDTO findAnimalBreed(String animalBreed) {
-    //     var animal = animalBreedRepository.findByAnimalBreed(animalBreed);
-
-    //     if (!animal.isPresent()) {
-    //         throw new InvalidField("animalBreed", "Não existe animal com este Temperamento!");
-    //     } 
-
-    //     AnimalDTO animalDto = new AnimalDTO(animal.get());
-    //     return animalDto;
-    // }
-
-    // @Transactional
-    // public AnimalDTO update(Animal updateAnimal, Long id) {
-    //     Optional<Animal> optional = this.animalRepository.findById(id);
-
-    //     if (!optional.isPresent()) {
-    //         throw new InvalidField("id", "Não existe animal com este id!");
-    //     }
-
-    //     Animal animal = optional.get();
-
-    //     if(updateAnimal.getName() != null)
-    //         animal.setName(updateAnimal.getName());
-
-    //     if(updateAnimal.getDescription() != null)
-    //         animal.setDescription(updateAnimal.getDescription());
-
-    //     if(updateAnimal.getAge() != 0)
-    //         animal.setAge(updateAnimal.getAge());
-
-    //     if(updateAnimal.getPhysicalCharacteristics() != null)
-    //         animal.setPhysicalCharacteristics(updateAnimal.getPhysicalCharacteristics());
-
-    //     if(updateAnimal.getSpecialNeeds() != null)
-    //         animal.setSpecialNeeds(updateAnimal.getSpecialNeeds());
-
-    //     if(updateAnimal.getAdopted() != null)
-    //         animal.setAdopted(updateAnimal.getAdopted());
+        animal.setId(animalEntity.getId());
         
-    //     AnimalDTO animalDto = new AnimalDTO(this.animalRepository.save(animal));
+        return this.animalRepository.save(animal);
+    }
 
-    //     return animalDto;
-    // }
+    public String delete(Long id) {
+        this.animalRepository.deleteById(id);
+        return "Deleted!";
+    }
 
-    // @Transactional
-    // public String delete(Long id) {
-    //     Optional<Animal> optional = this.animalRepository.findById(id);
-
-    //     if (!optional.isPresent()) {
-    //         throw new InvalidField("id", "Não existe animal com este id!");
-    //     }
-
-    //     Animal animal = optional.get();
-    //     this.animalRepository.deleteById(id);
-    //     return String.format("Animal %s foi deletado com sucesso", animal.getName());
-    // }
-
-    // @Transactional
-    // public void changeAdoptionStatus(boolean adopted, Long id) throws IOException{
-    //     Scanner ler = new Scanner(System.in);
-    //     char key;
-    //     Optional<Animal> optional = this.animalRepository.findById(id);
-
-    //     if (!optional.isPresent()) {
-    //         throw new InvalidField("id", "Não existe animal com este id!");
-    //     }
-    //     System.out.printf("\nAnimal esta disponivel (S/N):\n");
-    //     key = (char)System.in.read();
-        
-    //     if ((key == 'S') || (key == 's'))
-    //     System.out.printf("Adotado? %s.\n");
-    //         else 
-    //         System.out.printf("Adotado? %s.\n");
-    // }
-
+    public Animal isAdopted(Long id, Boolean adopted) {
+        Animal animal = animalRepository.findById(id).get();
+        animal.setAdopted(adopted);
+        return this.animalRepository.save(animal);
+    }
 }
