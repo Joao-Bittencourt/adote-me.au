@@ -1,4 +1,4 @@
-package br.edu.restinga.ifrs.adotemeau.configuration;
+package br.edu.restinga.ifrs.adotemeau.Configuration;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
