@@ -22,6 +22,6 @@ public class AnimalTemperamentDTO {
     public AnimalTemperamentDTO(AnimalTemperament aTemperament){
         this.id = aTemperament.getId();
         this.type = aTemperament.getType();
-        this.active = aTemperament.getActive();
+        this.active = aTemperament.isActive();
     }
 }
