@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.edu.restinga.ifrs.adotemeau.http.dtos.AnimalDTO;
 import br.edu.restinga.ifrs.adotemeau.models.Animal;
+import br.edu.restinga.ifrs.adotemeau.models.User;
 import br.edu.restinga.ifrs.adotemeau.repositories.AnimalRepository;
 
 @Service
@@ -70,4 +71,9 @@ public class AnimalService {
         animal.setAdopted(adopted);
         return this.animalRepository.save(animal);
     }
+
+    public List<Animal> findAnimalByUser(User user) {
+        return this.animalRepository.findByUser(user);
+    }
+
 }
