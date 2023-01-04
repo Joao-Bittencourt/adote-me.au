@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.edu.restinga.ifrs.adotemeau.http.dtos.AnimalDTO;
+import br.edu.restinga.ifrs.adotemeau.models.User;
 import br.edu.restinga.ifrs.adotemeau.services.AnimalService;
 
 @RestController
@@ -68,5 +70,10 @@ public class AnimalController {
     @PatchMapping("/adopted/{id}/{adopted}")
     public ResponseEntity isAdopted(@PathVariable("id") Long id, @PathVariable("adopted") Boolean adopted) {
         return new ResponseEntity(animalService.isAdopted(id, adopted), HttpStatus.OK);
+    }
+
+    @GetMapping("/all-by-user/")
+    public ResponseEntity findByBreed(@RequestParam("user") User user) {
+        return new ResponseEntity(animalService.findAnimalByUser(user), HttpStatus.OK);
     }
 }
