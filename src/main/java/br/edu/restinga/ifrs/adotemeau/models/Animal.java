@@ -55,6 +55,9 @@ public class Animal implements Serializable {
     private AnimalBreed breed;
 
     @OneToOne
+    private File profileImage;
+
+    @OneToOne
     private User user;
 
     public User getUser() {

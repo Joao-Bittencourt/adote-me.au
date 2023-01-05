@@ -28,10 +28,10 @@ public class FilesController {
     @Autowired
     DeleteFileService deleteFileService;
     
-    @PostMapping
-    public ResponseEntity create(@Valid @RequestParam("image") MultipartFile image) throws IOException {
-        return this.uploadFileService.execute(image.getBytes());
-    }
+    // @PostMapping
+    // public ResponseEntity create(@Valid @RequestParam("image") MultipartFile image) throws IOException {
+    //     return this.uploadFileService.execute(image.getBytes());
+    // }
 
     @DeleteMapping("/{imgurDeleteId}")
     public ResponseEntity delete(@PathVariable("imgurDeleteId") String imgurDeleteId) {
