@@ -73,7 +73,7 @@ public class AnimalController {
     }
 
     @GetMapping("/all-by-user/")
-    public ResponseEntity findByBreed(@RequestParam("user") User user) {
+    public ResponseEntity findAnimalByUser(@RequestParam("user") User user) {
         return new ResponseEntity(animalService.findAnimalByUser(user), HttpStatus.OK);
     }
 }
