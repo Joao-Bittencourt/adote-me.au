@@ -137,7 +137,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"type\": \"Gato\"\r\n}",
+							"raw": "{\r\n    \"type\": \"Cachorro\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -305,7 +305,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"type\": \"Estressado\"\r\n}",
+							"raw": "{\r\n    \"type\": \"Calmo\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -350,7 +350,7 @@
 				{
 					"name": "Update",
 					"request": {
-						"method": "GET",
+						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
@@ -446,7 +446,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"type\": \"Persa\",\r\n    \"animalFamily\": {\r\n        \"id\" : 2\r\n    }\r\n}",
+							"raw": "{\r\n    \"type\": \"Buldog\",\r\n    \"animalFamily\": {\r\n        \"id\" : 1\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -546,28 +546,6 @@
 							"path": [
 								"animal",
 								"breed",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "FindById",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/animal/breed/view/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"animal",
-								"breed",
-								"view",
 								"1"
 							]
 						}
@@ -728,7 +706,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Gato\",\r\n    \"description\": \"Destruidora de grades e cercas\",\r\n    \"age\": 1,\r\n    \"physicalCharacteristics\": \"Característica do animal\",\r\n    \"specialNeeds\": false,\r\n    \"sex\": \"FEMALE\",\r\n    \"user\": {\r\n        \"id\": 1\r\n    },\r\n    \"breed\": {\r\n        \"id\": 2\r\n    },\r\n    \"family\": {\r\n        \"id\": 2\r\n    },\r\n    \"temperaments\": [\r\n        {\"id\": 2}\r\n    ]\r\n}",
+							"raw": "{\r\n    \"name\": \"Cachorro\",\r\n    \"description\": \"Destruidora de grades e cercas\",\r\n    \"age\": 1,\r\n    \"physicalCharacteristics\": \"Característica do animal\",\r\n    \"specialNeeds\": false,\r\n    \"sex\": \"FEMALE\",\r\n    \"user\": {\r\n        \"id\": 1\r\n    },\r\n    \"breed\": {\r\n        \"id\": 1\r\n    },\r\n    \"family\": {\r\n        \"id\": 1\r\n    },\r\n    \"temperaments\": [\r\n        {\"id\": 1}\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -756,7 +734,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Gato\",\r\n    \"description\": \"Destruidora de grades e cercas\",\r\n    \"age\": 1,\r\n    \"physicalCharacteristics\": \"Característica do animal\",\r\n    \"specialNeeds\": false,\r\n    \"sex\": \"FEMALE\",\r\n    \"user\": {\r\n        \"id\": 1\r\n    },\r\n    \"breed\": {\r\n        \"id\": 2\r\n    },\r\n    \"family\": {\r\n        \"id\": 2\r\n    },\r\n    \"temperaments\": [\r\n        {\"id\": 2}\r\n    ]\r\n}",
+							"raw": "{\r\n    \"name\": \"Lucky\",\r\n    \"description\": \"Destruidora de grades e cercas\",\r\n    \"age\": 1,\r\n    \"physicalCharacteristics\": \"Característica do animal\",\r\n    \"specialNeeds\": false,\r\n    \"sex\": \"MALE\",\r\n    \"user\": {\r\n        \"id\": 1\r\n    },\r\n    \"breed\": {\r\n        \"id\": 2\r\n    },\r\n    \"family\": {\r\n        \"id\": 2\r\n    },\r\n    \"temperaments\": [\r\n        {\"id\": 1}\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -764,14 +742,15 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/animal",
+							"raw": "http://localhost:8080/animal/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"animal"
+								"animal",
+								"2"
 							]
 						}
 					},
@@ -783,7 +762,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/animal/2",
+							"raw": "http://localhost:8080/animal/3",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -791,7 +770,7 @@
 							"port": "8080",
 							"path": [
 								"animal",
-								"2"
+								"3"
 							]
 						}
 					},
@@ -800,10 +779,10 @@
 				{
 					"name": "Is Adopted",
 					"request": {
-						"method": "DELETE",
+						"method": "PATCH",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/animal/2",
+							"raw": "http://localhost:8080/animal/adopted/3/true",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -811,7 +790,9 @@
 							"port": "8080",
 							"path": [
 								"animal",
-								"2"
+								"adopted",
+								"3",
+								"true"
 							]
 						}
 					},
@@ -823,7 +804,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/animal/5",
+							"raw": "http://localhost:8080/animal/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -831,7 +812,7 @@
 							"port": "8080",
 							"path": [
 								"animal",
-								"5"
+								"1"
 							]
 						}
 					},
@@ -843,7 +824,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/animal",
+							"raw": "http://localhost:8080/animal?user=1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -851,6 +832,12 @@
 							"port": "8080",
 							"path": [
 								"animal"
+							],
+							"query": [
+								{
+									"key": "user",
+									"value": "1"
+								}
 							]
 						}
 					},
@@ -862,7 +849,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/animal/by-temperament/2",
+							"raw": "http://localhost:8080/animal/by-temperament/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -871,7 +858,7 @@
 							"path": [
 								"animal",
 								"by-temperament",
-								"2"
+								"1"
 							]
 						}
 					},
@@ -883,7 +870,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/animal/by-family/1",
+							"raw": "http://localhost:8080/animal/by-family/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -892,7 +879,7 @@
 							"path": [
 								"animal",
 								"by-family",
-								"1"
+								"2"
 							]
 						}
 					},
@@ -904,7 +891,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/animal/by-breed/2",
+							"raw": "http://localhost:8080/animal/by-breed/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -913,7 +900,100 @@
 							"path": [
 								"animal",
 								"by-breed",
-								"2"
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "AnimalImages",
+			"item": [
+				{
+					"name": "Set Profile Image",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/Adriano/Pictures/Screenshot_11.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/animal/profile-image/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"animal",
+								"profile-image",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set Album Images",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "images",
+									"type": "file",
+									"src": "/C:/Users/Adriano/Downloads/notas-P1-P2-finais.jpg"
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": "/C:/Users/Adriano/Downloads/Screenshot_1.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/animal/album/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"animal",
+								"album",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find Album",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/animal/album/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"animal",
+								"album",
+								"1"
 							]
 						}
 					},
