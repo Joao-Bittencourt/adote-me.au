@@ -17,7 +17,6 @@ import br.edu.restinga.ifrs.adotemeau.models.Animal;
 import br.edu.restinga.ifrs.adotemeau.models.AnimalAlbum;
 import br.edu.restinga.ifrs.adotemeau.models.File;
 import br.edu.restinga.ifrs.adotemeau.repositories.AnimalAlbumRepository;
-import br.edu.restinga.ifrs.adotemeau.models.User;
 import br.edu.restinga.ifrs.adotemeau.repositories.AnimalRepository;
 import br.edu.restinga.ifrs.adotemeau.services.files.UploadFileService;
 
