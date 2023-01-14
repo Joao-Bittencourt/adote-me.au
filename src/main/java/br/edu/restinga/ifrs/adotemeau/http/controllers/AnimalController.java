@@ -72,8 +72,8 @@ public class AnimalController {
         return new ResponseEntity(animalService.isAdopted(id, adopted), HttpStatus.OK);
     }
 
-    @GetMapping("/all-by-user/")
-    public ResponseEntity findAnimalByUser(@RequestParam("user") User user) {
-        return new ResponseEntity(animalService.findAnimalByUser(user), HttpStatus.OK);
+    @GetMapping("/all-by-user/{userId}")
+    public ResponseEntity findAnimalByUser(@PathVariable("userId") Long userId) {
+        return new ResponseEntity(animalService.findAnimalByUser(userId), HttpStatus.OK);
     }
 }

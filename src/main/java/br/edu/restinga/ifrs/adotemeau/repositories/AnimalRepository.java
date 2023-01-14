@@ -11,7 +11,7 @@ import br.edu.restinga.ifrs.adotemeau.models.User;
 @Repository
 public interface AnimalRepository extends JpaRepository<Animal, Long>{
     
-    List<Animal> findByUser(User user);
+    List<Animal> findByUser_Id(Long userId);
 
     List<Animal> findByTemperament_Id(Long id);
 
