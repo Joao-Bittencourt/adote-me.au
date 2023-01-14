@@ -92,4 +92,9 @@ public class AnimalController {
     public ResponseEntity getAlbum(@PathVariable("animalId") Long animalId) {
         return new ResponseEntity(this.animalService.getAlbum(animalId), HttpStatus.OK);
     }
+
+    @GetMapping("/all-by-user/{userId}")
+    public ResponseEntity findAnimalByUser(@PathVariable("userId") Long userId) {
+        return new ResponseEntity(animalService.findAnimalByUser(userId), HttpStatus.OK);
+    }
 }
