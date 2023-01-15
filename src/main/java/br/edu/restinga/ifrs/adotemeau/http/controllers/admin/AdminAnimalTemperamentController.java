@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.edu.restinga.ifrs.adotemeau.http.dtos.AnimalTemperamentDTO;
@@ -24,7 +23,7 @@ import br.edu.restinga.ifrs.adotemeau.services.AnimalTemperamentService;
 
 @RestController
 @RequestMapping("/api/v1/admin/animal/temperament")
-public class AnimalTemperamentController {
+public class AdminAnimalTemperamentController {
 
     @Autowired
     AnimalTemperamentService animalTemperamentService;
@@ -49,10 +48,5 @@ public class AnimalTemperamentController {
     @PatchMapping("/active")
     public ResponseEntity<AnimalTemperamentDTO> changeStatus(@Valid @RequestBody AnimalTemperament animalTemperament) {
         return ResponseEntity.ok().body(animalTemperamentService.changeStatus(animalTemperament));
-    }
-
-    @GetMapping("/find")
-    public ResponseEntity<List<AnimalTemperament>> findAllByActive(@RequestParam("status") Boolean status) {
-        return ResponseEntity.ok().body(animalTemperamentService.findAllByActive(status));
     }
 }

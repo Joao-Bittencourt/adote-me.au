@@ -30,11 +30,6 @@ public class AnimalFamilyController {
         this.animalFamilyService = animalFamilyService;
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<AnimalFamilyDTO> findById(@PathVariable Long id) {
-        return ResponseEntity.ok().body(animalFamilyService.findById(id));
-    }
-
     @GetMapping("/find")
     public ResponseEntity<List<AnimalFamilyDTO>> findAllByActive(@RequestParam("status") Boolean status) {
         return ResponseEntity.ok().body(animalFamilyService.findAllByActive(status));

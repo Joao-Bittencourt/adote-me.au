@@ -20,11 +20,6 @@ public class AnimalBreedController {
     @Autowired
     AnimalBreedService animalBreedService;
 
-    @GetMapping("/view/{id}")
-    public ResponseEntity<AnimalBreedDTO> findById(@PathVariable Long id) {
-        return ResponseEntity.ok().body(animalBreedService.findById(id));
-    }
-
     @GetMapping("/{animalFamily}")
     public ResponseEntity<List<AnimalBreedDTO>> findByAnimalFamilyTypeContaining(@PathVariable String animalFamily) {
         return ResponseEntity.ok().body(animalBreedService.findByAnimalFamilyTypeContaining(animalFamily));

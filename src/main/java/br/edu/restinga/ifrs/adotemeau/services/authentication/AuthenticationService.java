@@ -65,6 +65,6 @@ public class AuthenticationService {
         if (user.isPresent()) {
             return user.get();
         }
-        throw new Exception("User not found");
+        throw new Exception("Usuário não encontrado!");
     }
 }

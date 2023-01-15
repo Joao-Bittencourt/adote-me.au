@@ -35,11 +35,6 @@ public class AdminAnimalFamilyController {
         return ResponseEntity.ok().body(animalFamilyService.findAll());
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<AnimalFamilyDTO> findById(@PathVariable Long id) {
-        return ResponseEntity.ok().body(animalFamilyService.findById(id));
-    }
-
     @PostMapping
     public ResponseEntity<AnimalFamilyDTO> create(@Valid @RequestBody AnimalFamilyDTO animalFamilyDto) {
 
@@ -60,8 +55,8 @@ public class AdminAnimalFamilyController {
         return ResponseEntity.ok().body(animalFamilyService.changeStatus(animalFamily));
     }
 
-    @GetMapping("/find")
-    public ResponseEntity<List<AnimalFamilyDTO>> findAllByActive(@RequestParam("status") Boolean status) {
-        return ResponseEntity.ok().body(animalFamilyService.findAllByActive(status));
+    @GetMapping("/{id}")
+    public ResponseEntity<AnimalFamilyDTO> findById(@PathVariable Long id) {
+        return ResponseEntity.ok().body(animalFamilyService.findById(id));
     }
 }

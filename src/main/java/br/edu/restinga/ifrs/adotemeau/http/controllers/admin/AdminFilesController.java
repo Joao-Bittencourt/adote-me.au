@@ -19,7 +19,7 @@ import io.jsonwebtoken.io.IOException;
 
 @RestController
 @RequestMapping("/api/v1/admin/files")
-public class FilesController {
+public class AdminFilesController {
 
     @Autowired
     UploadFileService uploadFileService;

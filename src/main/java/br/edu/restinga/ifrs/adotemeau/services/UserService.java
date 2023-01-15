@@ -12,12 +12,16 @@ import br.edu.restinga.ifrs.adotemeau.exceptions.InvalidField;
 import br.edu.restinga.ifrs.adotemeau.http.dtos.UserDTO;
 import br.edu.restinga.ifrs.adotemeau.models.User;
 import br.edu.restinga.ifrs.adotemeau.repositories.UserRepository;
+import br.edu.restinga.ifrs.adotemeau.services.authentication.AuthenticationService;
 
 @Service
 public class UserService {
     
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private AuthenticationService authenticationService;
 
     @Transactional
     public UserDTO create(User user) {
@@ -45,14 +49,8 @@ public class UserService {
     }
 
     @Transactional
-    public UserDTO update(User updateUser, Long id) {
-        Optional<User> optional = this.userRepository.findById(id);
-
-        if (!optional.isPresent()) {
-            throw new InvalidField("id", "Não existe usuário com este id!");
-        }
-
-        User user = optional.get();
+    public UserDTO update(User updateUser, String token) throws Exception {
+        User user = authenticationService.getUser(token);
 
         if(updateUser.getName() != null)
             user.setName(updateUser.getName());
@@ -62,6 +60,7 @@ public class UserService {
             user.setEmail(updateUser.getEmail());
         
         UserDTO userDto = new UserDTO(this.userRepository.save(user));
+
         return userDto;
     }
 

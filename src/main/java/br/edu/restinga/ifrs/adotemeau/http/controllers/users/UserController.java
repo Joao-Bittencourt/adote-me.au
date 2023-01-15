@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,14 +31,8 @@ public class UserController {
     UserService userService;
 
     //Atualizar um usuário → UPDATE /user/{id}
-    @PutMapping("/{id}")
-    public ResponseEntity<UserDTO> update(@Valid @RequestBody User user, @PathVariable("id") Long id) {
-        return ResponseEntity.ok().body(userService.update(user, id));
-    }
-
-    //Deletar um usuário → DELETE /user/{id}
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> delete(@PathVariable Long id) {
-        return ResponseEntity.ok().body(userService.delete(id));
+    @PutMapping("")
+    public ResponseEntity<UserDTO> update(@Valid @RequestBody User user, @RequestHeader(value = "Authorization") String authorization) throws Exception {
+        return ResponseEntity.ok().body(userService.update(user, authorization));
     }
 }
