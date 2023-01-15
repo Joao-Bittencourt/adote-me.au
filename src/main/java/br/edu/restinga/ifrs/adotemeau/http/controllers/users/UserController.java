@@ -1,4 +1,4 @@
-package br.edu.restinga.ifrs.adotemeau.http.controllers;
+package br.edu.restinga.ifrs.adotemeau.http.controllers.users;
 
 import java.net.URISyntaxException;
 import java.util.List;
@@ -28,26 +28,6 @@ public class UserController {
     
     @Autowired
     UserService userService;
-    
-    //Cadastrar um novo usuário → POST/user
-    @PostMapping()
-    public ResponseEntity<UserDTO> create(@Valid @RequestBody UserDTO userDto) throws URISyntaxException {
-        var user = new User();
-        BeanUtils.copyProperties(userDto, user);
-        return ResponseEntity.status(HttpStatus.CREATED).body(userService.create(user));
-    }
-
-    //Listar todos os usuários → GET /user
-    @GetMapping()
-    public ResponseEntity<List<UserDTO>> findAll(){
-        return ResponseEntity.ok().body(userService.findAll());
-    }
-
-    //Localizar um usuário → GET /user/{id}
-    @GetMapping("/{id}")
-    public ResponseEntity<UserDTO> findById(@PathVariable Long id) {
-        return ResponseEntity.ok().body(userService.findById(id));
-    }
 
     //Atualizar um usuário → UPDATE /user/{id}
     @PutMapping("/{id}")

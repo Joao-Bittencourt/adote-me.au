@@ -22,10 +22,6 @@ public class UserService {
     @Transactional
     public UserDTO create(User user) {
 
-        if (userRepository.existsByEmail(user.getEmail())) {
-            throw new InvalidField("email", "Já existe este e-mail cadastrado em nossa base!");
-        }
-
         userRepository.save(user);
         UserDTO userDto = new UserDTO(user);
 

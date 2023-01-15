@@ -1,4 +1,4 @@
-package br.edu.restinga.ifrs.adotemeau.http.controllers;
+package br.edu.restinga.ifrs.adotemeau.http.controllers.admin;
 
 import br.edu.restinga.ifrs.adotemeau.http.dtos.AnimalBreedDTO;
 import br.edu.restinga.ifrs.adotemeau.services.AnimalBreedService;
@@ -22,8 +22,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/animal/breed")
-public class AnimalBreedController {
+@RequestMapping("/api/v1/admin/animal/breed")
+public class AdminAnimalBreedController {
 
     @Autowired
     AnimalBreedService animalBreedService;

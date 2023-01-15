@@ -1,4 +1,4 @@
-package br.edu.restinga.ifrs.adotemeau.http.controllers;
+package br.edu.restinga.ifrs.adotemeau.http.controllers.users;
 
 import java.io.IOException;
 import java.util.List;
@@ -94,7 +94,7 @@ public class AnimalController {
     }
 
     @GetMapping("/all-by-user/{userId}")
-    public ResponseEntity findAnimalByUser(@PathVariable("userId") Long userId) {
-        return new ResponseEntity(animalService.findAnimalByUser(userId), HttpStatus.OK);
+    public ResponseEntity findAnimalsByUser(@PathVariable("userId") Long userId) {
+        return new ResponseEntity(animalService.findAnimalsByUser(userId), HttpStatus.OK);
     }
 }

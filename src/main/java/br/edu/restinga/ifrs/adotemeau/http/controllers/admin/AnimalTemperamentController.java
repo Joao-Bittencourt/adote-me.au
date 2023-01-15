@@ -1,4 +1,4 @@
-package br.edu.restinga.ifrs.adotemeau.http.controllers;
+package br.edu.restinga.ifrs.adotemeau.http.controllers.admin;
 
 import java.util.List;
 
@@ -23,7 +23,7 @@ import br.edu.restinga.ifrs.adotemeau.models.AnimalTemperament;
 import br.edu.restinga.ifrs.adotemeau.services.AnimalTemperamentService;
 
 @RestController
-@RequestMapping("/animal/temperament")
+@RequestMapping("/api/v1/admin/animal/temperament")
 public class AnimalTemperamentController {
 
     @Autowired

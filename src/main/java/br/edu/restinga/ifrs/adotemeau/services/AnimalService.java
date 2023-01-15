@@ -117,7 +117,7 @@ public class AnimalService {
         return animalAlbumResponses;
     }
 
-    public List<Animal> findAnimalByUser(Long userId) {
+    public List<Animal> findAnimalsByUser(Long userId) {
         return this.animalRepository.findByUser_Id(userId);
     }
 

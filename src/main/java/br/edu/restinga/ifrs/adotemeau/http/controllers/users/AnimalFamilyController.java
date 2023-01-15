@@ -1,4 +1,4 @@
-package br.edu.restinga.ifrs.adotemeau.http.controllers;
+package br.edu.restinga.ifrs.adotemeau.http.controllers.users;
 
 import br.edu.restinga.ifrs.adotemeau.http.dtos.AnimalFamilyDTO;
 import br.edu.restinga.ifrs.adotemeau.services.AnimalFamilyService;
@@ -30,34 +30,9 @@ public class AnimalFamilyController {
         this.animalFamilyService = animalFamilyService;
     }
 
-    @GetMapping
-    public ResponseEntity<List<AnimalFamilyDTO>> findAll() {
-        return ResponseEntity.ok().body(animalFamilyService.findAll());
-    }
-
     @GetMapping("/{id}")
     public ResponseEntity<AnimalFamilyDTO> findById(@PathVariable Long id) {
         return ResponseEntity.ok().body(animalFamilyService.findById(id));
-    }
-
-    @PostMapping
-    public ResponseEntity<AnimalFamilyDTO> create(@Valid @RequestBody AnimalFamilyDTO animalFamilyDto) {
-
-        var animalFamily = new AnimalFamily();
-        BeanUtils.copyProperties(animalFamilyDto, animalFamily);
-        animalFamily.setActive(true);
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(animalFamilyService.create(animalFamily));
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<AnimalFamilyDTO> update(@Valid @RequestBody AnimalFamily animalFamily, @PathVariable("id") Long id) {
-        return ResponseEntity.ok().body(animalFamilyService.update(animalFamily, id));
-    }
-
-    @PatchMapping("/active")
-    public ResponseEntity<AnimalFamilyDTO> changeStatus(@Valid @RequestBody AnimalFamily animalFamily) {
-        return ResponseEntity.ok().body(animalFamilyService.changeStatus(animalFamily));
     }
 
     @GetMapping("/find")
