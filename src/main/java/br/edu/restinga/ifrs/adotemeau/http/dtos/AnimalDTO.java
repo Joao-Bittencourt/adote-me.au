@@ -52,9 +52,6 @@ public class AnimalDTO {
     @NotNull(message = "O campo animalBreed não pode ser nulo, vazio ou em branco!")
     private AnimalBreed breed;
 
-    @NotNull(message = "O campo animalBreed não pode ser nulo, vazio ou em branco!")
-    private User user;
-
     // public AnimalDTO(Animal animal) {
     //     this.id = animal.getId();
     //     this.name = animal.getName();

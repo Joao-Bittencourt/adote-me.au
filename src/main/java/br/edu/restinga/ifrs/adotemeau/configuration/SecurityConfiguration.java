@@ -26,6 +26,7 @@ public class SecurityConfiguration {
         .disable()
         .authorizeHttpRequests()
         .antMatchers("/api/v1/auth/**").permitAll()
+        .antMatchers("/animal/**").permitAll()
         .antMatchers("/api/v1/admin/**").hasAuthority("ADMIN")
         .anyRequest()
         .authenticated()
