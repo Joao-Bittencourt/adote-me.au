@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthenticateRequest {
+public class AuthenticationRequest {
     
     @NotNull(message = "O campo email não pode ser nulo, vazio ou em branco")
     @Email(regexp = "[\\w-]+@([\\w-]+\\.)+[\\w-]+")
