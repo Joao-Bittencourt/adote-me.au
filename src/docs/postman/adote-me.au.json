@@ -10,80 +10,90 @@
 			"name": "User",
 			"item": [
 				{
-					"name": "Create",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"password\": \"Adr1234\",\r\n    \"name\": \"Adriano Lucas Vieira\",\r\n    \"email\": \"adriano@email.com\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+					"name": "Authenticate",
+					"item": [
+						{
+							"name": "Register",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"Lidiane Vieira\",\r\n    \"email\":\"lidi@email.com\",\r\n    \"password\":\"Adr1234\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/auth/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"register"
+									]
 								}
-							}
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "http://localhost:8080/user",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"user"
-							]
+						{
+							"name": "Authenticate",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"email\":\"lidi@email.com\",\r\n    \"password\":\"Adr1234\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/auth/authenticate",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"authenticate"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
-				},
-				{
-					"name": "Find All",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/user",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"user"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "FindById",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/user/10",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"user",
-								"10"
-							]
-						}
-					},
-					"response": []
+					]
 				},
 				{
 					"name": "Update",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsaWRpYW5lQGVtYWlsLmNvbSIsImlhdCI6MTY3Mzc1OTgwNSwiZXhwIjoxNjczNzYxMjQ1fQ.DgpEakq-jv4_RGCHD2tYxd4JbQJgndKCmHnqMR6b26U",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"password\": \"Adr1234\",\r\n    \"name\": \"Adriano Vieira\",\r\n    \"email\": \"adriano@email.com\"\r\n}",
+							"raw": "{\r\n    \"password\": \"Adr1234\",\r\n    \"name\": \"Lidi Vieira\",\r\n    \"email\": \"lidiane@email.com\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -91,35 +101,58 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/user/1",
+							"raw": "http://localhost:8080/user",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"user",
-								"1"
+								"user"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Delete",
+					"name": "Me",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
-						"method": "DELETE",
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsaWRpYW5lQGVtYWlsLmNvbSIsImlhdCI6MTY3Mzc1OTgwNSwiZXhwIjoxNjczNzYxMjQ1fQ.DgpEakq-jv4_RGCHD2tYxd4JbQJgndKCmHnqMR6b26U",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://localhost:8080/user/1",
+							"raw": "http://localhost:8080/api/v1/auth/me",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"user",
-								"1"
+								"api",
+								"v1",
+								"auth",
+								"me"
 							]
 						}
 					},
@@ -130,82 +163,6 @@
 		{
 			"name": "AnimalFamily",
 			"item": [
-				{
-					"name": "Create",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"type\": \"Cachorro\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/animal/family",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"animal",
-								"family"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "FindById",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/animal/family/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"animal",
-								"family",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "FindAll",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/animal/family?status=1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"animal",
-								"family"
-							],
-							"query": [
-								{
-									"key": "status",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"response": []
-				},
 				{
 					"name": "FindAllByActive",
 					"request": {
@@ -232,66 +189,6 @@
 						}
 					},
 					"response": []
-				},
-				{
-					"name": "update",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"type\": \"cachorro\",\r\n    \"active\": true\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/animal/family/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"animal",
-								"family",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Active",
-					"request": {
-						"method": "PATCH",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"id\": 2,\r\n    \"active\": true\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/animal/family/active",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"animal",
-								"family",
-								"active"
-							]
-						}
-					},
-					"response": []
 				}
 			]
 		},
@@ -299,87 +196,18 @@
 			"name": "AnimalTemperament",
 			"item": [
 				{
-					"name": "Create",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"type\": \"Calmo\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/animal/temperament",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"animal",
-								"temperament"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "FindAll",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/animal/temperament",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"animal",
-								"temperament"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"type\": \"Bravo\",\r\n    \"active\": false\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/animal/temperament/2",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"animal",
-								"temperament",
-								"2"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "FindAllByActive",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsaWRpYW5lQGVtYWlsLmNvbSIsImlhdCI6MTY3Mzc1OTgwNSwiZXhwIjoxNjczNzYxMjQ1fQ.DgpEakq-jv4_RGCHD2tYxd4JbQJgndKCmHnqMR6b26U",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -403,155 +231,12 @@
 						}
 					},
 					"response": []
-				},
-				{
-					"name": "Active",
-					"request": {
-						"method": "PATCH",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"id\": 2,\r\n    \"active\": true\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/animal/temperament/active",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"animal",
-								"temperament",
-								"active"
-							]
-						}
-					},
-					"response": []
 				}
 			]
 		},
 		{
 			"name": "AnimalBreed",
 			"item": [
-				{
-					"name": "Create",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"type\": \"Buldog\",\r\n    \"animalFamily\": {\r\n        \"id\" : 1\r\n    }\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/animal/breed",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"animal",
-								"breed"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "FindAll",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"id\": 1,\r\n    \"action\": true\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/animal/breed",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"animal",
-								"breed"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "FindById",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/animal/breed/view/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"animal",
-								"breed",
-								"view",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"type\": \"Rusky\",\r\n    \"active\": true,\r\n    \"animalFamily\": {\r\n        \"id\" : 1\r\n    }\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/animal/breed/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"animal",
-								"breed",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
 				{
 					"name": "findByAnimalFamily",
 					"request": {
@@ -599,100 +284,6 @@
 						}
 					},
 					"response": []
-				},
-				{
-					"name": "Active",
-					"request": {
-						"method": "PATCH",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"id\": 3,\r\n    \"active\": false\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/animal/breed/active",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"animal",
-								"breed",
-								"active"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Files",
-			"item": [
-				{
-					"name": "Create",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "image",
-									"type": "file",
-									"src": "/C:/Users/Adriano/Downloads/LambdaTest-logo.png"
-								}
-							]
-						},
-						"url": {
-							"raw": "http://localhost:8080/files",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"files"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "image",
-									"type": "file",
-									"src": "/C:/Users/Adriano/Downloads/LambdaTest-logo.png"
-								}
-							]
-						},
-						"url": {
-							"raw": "http://localhost:8080/files/8dip7U1us4xcYg7",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"files",
-								"8dip7U1us4xcYg7"
-							]
-						}
-					},
-					"response": []
 				}
 			]
 		},
@@ -702,11 +293,21 @@
 				{
 					"name": "Create",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsaWRpQGVtYWlsLmNvbSIsImlhdCI6MTY3Mzc2NDI0NSwiZXhwIjoxNjczNzkzMDQ1fQ.peCft5BnIFcQgnmoYIV1jDkkVuqD2iZfrqWwd-hlCfM",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Cachorro\",\r\n    \"description\": \"Destruidora de grades e cercas\",\r\n    \"age\": 1,\r\n    \"physicalCharacteristics\": \"Característica do animal\",\r\n    \"specialNeeds\": false,\r\n    \"sex\": \"FEMALE\",\r\n    \"user\": {\r\n        \"id\": 1\r\n    },\r\n    \"breed\": {\r\n        \"id\": 1\r\n    },\r\n    \"family\": {\r\n        \"id\": 1\r\n    },\r\n    \"temperaments\": [\r\n        {\"id\": 1}\r\n    ]\r\n}",
+							"raw": "{\r\n    \"name\": \"Filó\",\r\n    \"description\": \"Destruidora de muros e cercas\",\r\n    \"age\": 1,\r\n    \"physicalCharacteristics\": \"Característica do animal\",\r\n    \"specialNeeds\": false,\r\n    \"sex\": \"FEMALE\",\r\n    \"breed\": {\r\n        \"id\": 1\r\n    },\r\n    \"family\": {\r\n        \"id\": 1\r\n    },\r\n    \"temperaments\": [\r\n        {\"id\": 1}\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -730,6 +331,16 @@
 				{
 					"name": "Update",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZHJpYW5vQGVtYWlsLmNvbSIsImlhdCI6MTY3Mzc2MzIxMywiZXhwIjoxNjczNzkyMDEzfQ.fvAzRKmELfXaPbcOQXXDHqxOwdN46PI5qDEVKJzl660",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
@@ -742,7 +353,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/animal/2",
+							"raw": "http://localhost:8080/animal/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -750,7 +361,7 @@
 							"port": "8080",
 							"path": [
 								"animal",
-								"2"
+								"1"
 							]
 						}
 					},
@@ -821,8 +432,25 @@
 				{
 					"name": "Find All",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZHJpYW5vQGVtYWlsLmNvbSIsImlhdCI6MTY3Mzc1MjM5MCwiZXhwIjoxNjczNzUzODMwfQ.W72UQTiqatOna5lld8hdyGrRfXzQGtrVWUeWSrdu6JU",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsaWRpYW5lQGVtYWlsLmNvbSIsImlhdCI6MTY3Mzc0OTc4OCwiZXhwIjoxNjczNzUxMjI4fQ.I7pmsM_wZmFNaR37z_6FEQBJYRtDZWrJMBnW0KxhO98",
+								"type": "text",
+								"disabled": true
+							}
+						],
 						"url": {
 							"raw": "http://localhost:8080/animal?user=1",
 							"protocol": "http",
@@ -905,6 +533,36 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Find All By User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsaWRpQGVtYWlsLmNvbSIsImlhdCI6MTY3Mzc2NDI0NSwiZXhwIjoxNjczNzkzMDQ1fQ.peCft5BnIFcQgnmoYIV1jDkkVuqD2iZfrqWwd-hlCfM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/animal/all-by-user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"animal",
+								"all-by-user"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -963,7 +621,7 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8080/animal/album/1",
+							"raw": "http://localhost:8080/animal/album/3",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -972,7 +630,7 @@
 							"path": [
 								"animal",
 								"album",
-								"1"
+								"3"
 							]
 						}
 					},
@@ -981,6 +639,16 @@
 				{
 					"name": "Find Album",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsaWRpYW5lQGVtYWlsLmNvbSIsImlhdCI6MTY3Mzc1MjIzOCwiZXhwIjoxNjczNzUzNjc4fQ.g9W2q9n3wi6SY4tTy-yzF8xeKZ_gRAyXo43Zy1soV-g",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -998,6 +666,758 @@
 						}
 					},
 					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Authenticate",
+					"item": [
+						{
+							"name": "Authenticate",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"adriano@email.com\",\r\n    \"password\":\"Adr1234\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/auth/authenticate",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"authenticate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Me",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/auth/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "Find All",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/user",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"password\": \"Adr1234\",\r\n    \"name\": \"Adriano Vieira\",\r\n    \"email\": \"adriano@email.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/user/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"user",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/user/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"user",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "FindById",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsaWRpYW5lQGVtYWlsLmNvbSIsImlhdCI6MTY3Mzc1NzkyMSwiZXhwIjoxNjczNzU5MzYxfQ.tjuiQptx8RdIw0S2Kdhg6tYsjSBGGR-pcIWaW_-tvjs",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/admin/user/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"admin",
+										"user",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "AnimalFamily",
+					"item": [
+						{
+							"name": "FindById",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/admin/animal/family/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"admin",
+										"animal",
+										"family",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZHJpYW5vQGVtYWlsLmNvbSIsImlhdCI6MTY3Mzc2MTMzMCwiZXhwIjoxNjczNzYyNzcwfQ.frhCYvVxDmRdS6ilG1R7UM9fVtMnpXiY1eg5sE1xMQo",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"type\": \"Cachorro\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/admin/animal/family",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"admin",
+										"animal",
+										"family"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "FindAll",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/admin/animal/family?status=1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"admin",
+										"animal",
+										"family"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Active",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 2,\r\n    \"active\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/animal/family/active",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"animal",
+										"family",
+										"active"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"type\": \"cachorro\",\r\n    \"active\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/admin/animal/family/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"admin",
+										"animal",
+										"family",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "AnimalTemperament",
+					"item": [
+						{
+							"name": "Create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZHJpYW5vQGVtYWlsLmNvbSIsImlhdCI6MTY3Mzc2MDQ5NywiZXhwIjoxNjczNzYxOTM3fQ.th8QnsBhhn0Cp06KJ6PX1aw9btCT0KIhD1Xp31c5qkA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"type\": \"Calmo\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/admin/animal/temperament",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"admin",
+										"animal",
+										"temperament"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "FindAll",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZHJpYW5vQGVtYWlsLmNvbSIsImlhdCI6MTY3Mzc2MTMzMCwiZXhwIjoxNjczNzYyNzcwfQ.frhCYvVxDmRdS6ilG1R7UM9fVtMnpXiY1eg5sE1xMQo",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/admin/animal/temperament",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"admin",
+										"animal",
+										"temperament"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Active",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 2,\r\n    \"active\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/admin/animal/temperament",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"admin",
+										"animal",
+										"temperament"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"type\": \"Bravo\",\r\n    \"active\": false\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/admin/animal/temperament/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"admin",
+										"animal",
+										"temperament",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "AnimalBreed",
+					"item": [
+						{
+							"name": "Create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZHJpYW5vQGVtYWlsLmNvbSIsImlhdCI6MTY3Mzc2MTMzMCwiZXhwIjoxNjczNzYyNzcwfQ.frhCYvVxDmRdS6ilG1R7UM9fVtMnpXiY1eg5sE1xMQo",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"type\": \"Buldog\",\r\n    \"animalFamily\": {\r\n        \"id\" : 1\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/admin/animal/breed",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"admin",
+										"animal",
+										"breed"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "FindAll",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZHJpYW5vQGVtYWlsLmNvbSIsImlhdCI6MTY3Mzc2MTMzMCwiZXhwIjoxNjczNzYyNzcwfQ.frhCYvVxDmRdS6ilG1R7UM9fVtMnpXiY1eg5sE1xMQo",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"action\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/admin/animal/breed",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"admin",
+										"animal",
+										"breed"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "FindById",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZHJpYW5vQGVtYWlsLmNvbSIsImlhdCI6MTY3Mzc2MTMzMCwiZXhwIjoxNjczNzYyNzcwfQ.frhCYvVxDmRdS6ilG1R7UM9fVtMnpXiY1eg5sE1xMQo",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/admin/animal/breed/view/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"admin",
+										"animal",
+										"breed",
+										"view",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Active",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 3,\r\n    \"active\": false\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/admin/animal/breed/active",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"admin",
+										"animal",
+										"breed",
+										"active"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"type\": \"Rusky\",\r\n    \"active\": true,\r\n    \"animalFamily\": {\r\n        \"id\" : 1\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/admin/animal/breed/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"admin",
+										"animal",
+										"breed",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Files",
+					"item": [
+						{
+							"name": "Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/C:/Users/Adriano/Downloads/LambdaTest-logo.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/admin/files",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"admin",
+										"files"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/C:/Users/Adriano/Downloads/LambdaTest-logo.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/admin/files/8dip7U1us4xcYg7",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"admin",
+										"files",
+										"8dip7U1us4xcYg7"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				}
 			]
 		}
