@@ -6,9 +6,9 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import br.edu.restinga.ifrs.adotemeau.http.controllers.auth.AuthenticationRequest;
-import br.edu.restinga.ifrs.adotemeau.http.controllers.auth.AuthenticationResponse;
-import br.edu.restinga.ifrs.adotemeau.http.controllers.auth.RegisterRequest;
+import br.edu.restinga.ifrs.adotemeau.http.dtos.request.AuthenticationRequest;
+import br.edu.restinga.ifrs.adotemeau.http.dtos.request.RegisterRequest;
+import br.edu.restinga.ifrs.adotemeau.http.dtos.response.AuthenticationResponse;
 import br.edu.restinga.ifrs.adotemeau.models.User;
 import br.edu.restinga.ifrs.adotemeau.models.enums.Role;
 import br.edu.restinga.ifrs.adotemeau.repositories.UserRepository;

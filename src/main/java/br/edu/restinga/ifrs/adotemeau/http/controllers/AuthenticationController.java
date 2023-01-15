@@ -1,4 +1,4 @@
-package br.edu.restinga.ifrs.adotemeau.http.controllers.auth;
+package br.edu.restinga.ifrs.adotemeau.http.controllers;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.edu.restinga.ifrs.adotemeau.http.dtos.request.AuthenticationRequest;
+import br.edu.restinga.ifrs.adotemeau.http.dtos.request.RegisterRequest;
+import br.edu.restinga.ifrs.adotemeau.http.dtos.response.AuthenticationResponse;
 import br.edu.restinga.ifrs.adotemeau.services.authentication.AuthenticationService;
 
 @RestController

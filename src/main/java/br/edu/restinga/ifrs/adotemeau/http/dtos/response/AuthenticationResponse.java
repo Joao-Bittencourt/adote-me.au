@@ -1,4 +1,4 @@
-package br.edu.restinga.ifrs.adotemeau.http.controllers.auth;
+package br.edu.restinga.ifrs.adotemeau.http.dtos.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
