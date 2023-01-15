@@ -1,6 +1,4 @@
-package br.edu.restinga.ifrs.adotemeau.http.controllers;
-
-import java.io.IOException;
+package br.edu.restinga.ifrs.adotemeau.http.controllers.admin;
 
 import javax.validation.Valid;
 
@@ -14,13 +12,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import br.edu.restinga.ifrs.adotemeau.services.externalApi.imgur.ImgurDeleteService;
+import br.edu.restinga.ifrs.adotemeau.models.File;
 import br.edu.restinga.ifrs.adotemeau.services.files.DeleteFileService;
 import br.edu.restinga.ifrs.adotemeau.services.files.UploadFileService;
+import io.jsonwebtoken.io.IOException;
 
 @RestController
-@RequestMapping("/files")
-public class FilesController {
+@RequestMapping("/api/v1/admin/files")
+public class AdminFilesController {
 
     @Autowired
     UploadFileService uploadFileService;
@@ -28,10 +27,10 @@ public class FilesController {
     @Autowired
     DeleteFileService deleteFileService;
     
-    // @PostMapping
-    // public ResponseEntity create(@Valid @RequestParam("image") MultipartFile image) throws IOException {
-    //     return this.uploadFileService.execute(image.getBytes());
-    // }
+    @PostMapping
+    public File create(@Valid @RequestParam("image") MultipartFile image) throws IOException, java.io.IOException {
+        return this.uploadFileService.execute(image.getBytes());
+    }
 
     @DeleteMapping("/{imgurDeleteId}")
     public ResponseEntity delete(@PathVariable("imgurDeleteId") String imgurDeleteId) {

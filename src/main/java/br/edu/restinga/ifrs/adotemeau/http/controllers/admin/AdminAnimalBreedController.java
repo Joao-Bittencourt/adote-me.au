@@ -1,4 +1,4 @@
-package br.edu.restinga.ifrs.adotemeau.http.controllers;
+package br.edu.restinga.ifrs.adotemeau.http.controllers.admin;
 
 import br.edu.restinga.ifrs.adotemeau.http.dtos.AnimalBreedDTO;
 import br.edu.restinga.ifrs.adotemeau.services.AnimalBreedService;
@@ -18,12 +18,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/animal/breed")
-public class AnimalBreedController {
+@RequestMapping("/api/v1/admin/animal/breed")
+public class AdminAnimalBreedController {
 
     @Autowired
     AnimalBreedService animalBreedService;
@@ -36,11 +35,6 @@ public class AnimalBreedController {
     @GetMapping("/view/{id}")
     public ResponseEntity<AnimalBreedDTO> findById(@PathVariable Long id) {
         return ResponseEntity.ok().body(animalBreedService.findById(id));
-    }
-
-    @GetMapping("/{animalFamily}")
-    public ResponseEntity<List<AnimalBreedDTO>> findByAnimalFamilyTypeContaining(@PathVariable String animalFamily) {
-        return ResponseEntity.ok().body(animalBreedService.findByAnimalFamilyTypeContaining(animalFamily));
     }
 
     @PostMapping
@@ -61,10 +55,5 @@ public class AnimalBreedController {
     @PatchMapping("/active")
     public ResponseEntity<AnimalBreedDTO> changeStatus(@Valid @RequestBody AnimalBreed animalFamily) {
         return ResponseEntity.ok().body(animalBreedService.changeStatus(animalFamily));
-    }
-
-    @GetMapping("/find")
-    public ResponseEntity<List<AnimalBreedDTO>> findAllByActive(@RequestParam("status") Boolean status) {
-        return ResponseEntity.ok().body(animalBreedService.findAllByActive(status));
     }
 }

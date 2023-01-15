@@ -1,4 +1,4 @@
-package br.edu.restinga.ifrs.adotemeau.http.controllers;
+package br.edu.restinga.ifrs.adotemeau.http.controllers.users;
 
 import java.util.Optional;
 

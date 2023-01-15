@@ -1,4 +1,4 @@
-package br.edu.restinga.ifrs.adotemeau.http.controllers;
+package br.edu.restinga.ifrs.adotemeau.http.controllers.admin;
 
 import br.edu.restinga.ifrs.adotemeau.http.dtos.AnimalFamilyDTO;
 import br.edu.restinga.ifrs.adotemeau.services.AnimalFamilyService;
@@ -21,23 +21,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/animal/family")
-public class AnimalFamilyController {
+@RequestMapping("/api/v1/admin/animal/family")
+public class AdminAnimalFamilyController {
 
     final AnimalFamilyService animalFamilyService;
 
-    public AnimalFamilyController(AnimalFamilyService animalFamilyService) {
+    public AdminAnimalFamilyController(AnimalFamilyService animalFamilyService) {
         this.animalFamilyService = animalFamilyService;
     }
 
     @GetMapping
     public ResponseEntity<List<AnimalFamilyDTO>> findAll() {
         return ResponseEntity.ok().body(animalFamilyService.findAll());
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<AnimalFamilyDTO> findById(@PathVariable Long id) {
-        return ResponseEntity.ok().body(animalFamilyService.findById(id));
     }
 
     @PostMapping
@@ -60,8 +55,8 @@ public class AnimalFamilyController {
         return ResponseEntity.ok().body(animalFamilyService.changeStatus(animalFamily));
     }
 
-    @GetMapping("/find")
-    public ResponseEntity<List<AnimalFamilyDTO>> findAllByActive(@RequestParam("status") Boolean status) {
-        return ResponseEntity.ok().body(animalFamilyService.findAllByActive(status));
+    @GetMapping("/{id}")
+    public ResponseEntity<AnimalFamilyDTO> findById(@PathVariable Long id) {
+        return ResponseEntity.ok().body(animalFamilyService.findById(id));
     }
 }

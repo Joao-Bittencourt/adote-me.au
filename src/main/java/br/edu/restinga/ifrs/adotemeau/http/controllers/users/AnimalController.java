@@ -1,4 +1,4 @@
-package br.edu.restinga.ifrs.adotemeau.http.controllers;
+package br.edu.restinga.ifrs.adotemeau.http.controllers.users;
 
 import java.io.IOException;
 import java.util.List;
@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -33,8 +34,11 @@ public class AnimalController {
     AnimalRepository animalRepository;
 
     @PostMapping
-    public ResponseEntity create(@RequestBody @Valid AnimalDTO animalDTO) {
-        return new ResponseEntity(animalService.create(animalDTO), HttpStatus.CREATED);
+    public ResponseEntity create(
+            @RequestBody @Valid AnimalDTO animalDTO, 
+            @RequestHeader(value = "Authorization") String authorization
+    ) throws Exception {
+        return new ResponseEntity(animalService.create(animalDTO, authorization), HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
@@ -63,29 +67,47 @@ public class AnimalController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity update(@PathVariable("id") Long id, @RequestBody @Valid AnimalDTO animalDTO) {
-        return new ResponseEntity(animalService.update(id, animalDTO), HttpStatus.OK);
+    public ResponseEntity update(
+            @PathVariable("id") Long id, 
+            @RequestBody @Valid AnimalDTO animalDTO, 
+            @RequestHeader(value = "Authorization") String authorization
+    ) throws Exception {
+        return new ResponseEntity(animalService.update(id, animalDTO, authorization), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity delete(@PathVariable("id") Long id) {
-        return new ResponseEntity(animalService.delete(id), HttpStatus.OK);
+    public ResponseEntity delete(
+            @PathVariable("id") Long id,
+            @RequestHeader(value = "Authorization") String authorization
+    ) throws Exception {
+        return new ResponseEntity(animalService.delete(id, authorization), HttpStatus.OK);
     }
 
     @PatchMapping("/adopted/{id}/{adopted}")
-    public ResponseEntity isAdopted(@PathVariable("id") Long id, @PathVariable("adopted") Boolean adopted) {
-        return new ResponseEntity(animalService.isAdopted(id, adopted), HttpStatus.OK);
+    public ResponseEntity isAdopted(
+            @PathVariable("id") Long id, 
+            @PathVariable("adopted") Boolean adopted,
+            @RequestHeader(value = "Authorization") String authorization
+    ) throws Exception {
+        return new ResponseEntity(animalService.isAdopted(id, adopted, authorization), HttpStatus.OK);
     }
 
     @PatchMapping("/profile-image/{animalId}")
-    public ResponseEntity setProfileImage(@PathVariable("animalId") Long animalId, MultipartFile image)
-            throws IOException {
-        return new ResponseEntity(animalService.setProfileImage(animalId, image.getBytes()), HttpStatus.OK);
+    public ResponseEntity setProfileImage(
+            @PathVariable("animalId") Long animalId, 
+            MultipartFile image,
+            @RequestHeader(value = "Authorization") String authorization
+    ) throws Exception {
+        return new ResponseEntity(animalService.setProfileImage(animalId, image.getBytes(), authorization), HttpStatus.OK);
     }
 
     @PostMapping("/album/{animalId}")
-    public ResponseEntity setAlbumImage(@PathVariable("animalId") Long animalId, List<MultipartFile> images) throws Exception {
-        return new ResponseEntity(this.animalService.setAlbumImage(animalId, images), HttpStatus.OK);
+    public ResponseEntity setAlbumImage(
+            @PathVariable("animalId") Long animalId, 
+            List<MultipartFile> images,
+            @RequestHeader(value = "Authorization") String authorization
+    ) throws Exception {
+        return new ResponseEntity(this.animalService.setAlbumImage(animalId, images, authorization), HttpStatus.OK);
     }
 
     @GetMapping("/album/{animalId}")
@@ -93,8 +115,8 @@ public class AnimalController {
         return new ResponseEntity(this.animalService.getAlbum(animalId), HttpStatus.OK);
     }
 
-    @GetMapping("/all-by-user/{userId}")
-    public ResponseEntity findAnimalByUser(@PathVariable("userId") Long userId) {
-        return new ResponseEntity(animalService.findAnimalByUser(userId), HttpStatus.OK);
+    @GetMapping("/all-by-user")
+    public ResponseEntity findAnimalsByUser(@RequestHeader(value = "Authorization") String authorization) throws Exception {
+        return new ResponseEntity(animalService.findAnimalsByUser(authorization), HttpStatus.OK);
     }
 }
